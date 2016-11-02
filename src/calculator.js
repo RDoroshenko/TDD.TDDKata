@@ -1,23 +1,16 @@
-var delimeter = /,|\n/;
-
-function calculateSumWithDelimeters(input) {
-    let numbers = input.split(delimeter);
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += parseInt(numbers[i]);
+export function add(string) {
+    switch (string) {
+        case '' : return 0; break;
+        case 1 : return 1; break;
+        default :
+            let parameters = string.split(',');
+            let sum = 0;
+            for (let i = 0; i < parameters.length; i++){
+                sum += parseInt(parameters[i]);
+            }
+                return sum;
+            break;
     }
-    return sum;
-}
 
-function hasDelimeter(input) {
-    let numbers = input.split(delimeter);
-    return numbers.length > 1;
-}
 
-export function add(input) {
-    if (input == '') return 0;
-
-    if (!hasDelimeter(input)) return parseInt(input);
-
-    return calculateSumWithDelimeters(input);
 }
