@@ -1,44 +1,48 @@
 import assert from 'assert'
 import { add } from '../src/calculator'
 
-suite('When adding with string calculator', function() {
-    suite('When separated by comma', function() {
-        test('for an empty string it will return 0', function() {
-            let string = '';
+suite('When I use string calcutaor', function() {
+    test('empty string should result in 0', function() {
+        let string = '';
 
-            let sum = add(string);
+        let sum = add(string);
 
-            assert.equal(sum, 0);
-        })
-        test('for string containing 1 it will return 1', function() {
-            let string = '1';
-
-            let sum = add(string);
-
-            assert.equal(sum, 1);
-        })
-        test('for string containing 1,2 it will return 1 + 2', function() {
-            let string = '1,2';
-
-            let sum = add(string);
-
-            assert.equal(sum, 1 + 2);
-        })
-        test('for string containing 1,2 and 88 it will return 1 + 2 + 88', function() {
-            let string = '1,2,88';
-
-            let sum = add(string);
-
-            assert.equal(sum, 1 + 2 + 88);
-        })
+        assert.equal(0, sum);
     })
-    suite('When having different separators', function() {
-        test('for string 1 new line 2,3 it will return 1 +2 +3', function() {
-            let string = '1\n2,3';
+    test('string 1 should result in 1', function() {
+        let string = '1';
 
-            let sum = add(string);
+        let sum = add(string);
 
-            assert.equal(sum, 1 + 2 + 3);
-        })
+        assert.equal(1, sum);
     })
+    test('string 34,56 should result in 34 + 56', function() {
+        let string = '34,56';
+
+        let sum = add(string);
+
+        assert.equal(34 + 56, sum);
+    })
+    test('string 34,56,92 should result in 34 + 56 + 92', function() {
+        let string = '34,56,92';
+
+        let sum = add(string);
+
+        assert.equal(34 + 56 + 92, sum);
+    })
+    test('string 1\n2, 3 should result in 1 + 2 + 3', function() {
+        let string = '1\n2,3';
+
+        let sum = add(string);
+
+        assert.equal(1 + 2 + 3, sum);
+    })
+    test('string //;\n1;2 should return 1 + 2', function() {
+        let string = '//;\n1;2';
+
+        let sum = add(string);
+
+        assert.equal(1 + 2, sum);
+    })
+
 })
