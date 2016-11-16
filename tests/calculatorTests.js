@@ -37,12 +37,5 @@ suite('When I use string calcutaor', function() {
 
         assert.equal(1 + 2 + 3, sum);
     })
-    test('string //;\n1;2 should return 1 + 2', function() {
-        let string = '//;\n1;2';
-
-        let sum = add(string);
-
-        assert.equal(1 + 2, sum);
-    })
 
 })
